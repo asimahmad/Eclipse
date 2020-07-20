@@ -1,6 +1,10 @@
 package vendorT;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -31,7 +35,13 @@ public class BrowserTest {
 		//WebDriverManager.chromedriver().setup(); // for the latest version
 		//WebDriver driver = new ChromeDriver();
 		
-		driver.get("https://www.selenium.dev/");
+		driver.get("https://google.com/");
+		//WebElement textBox = driver.findElement(By.id("fakebox-text"));
+		WebElement textBox = driver.findElement(By.xpath("//input[@name='q']"));
+		List<WebElement> list = driver.findElements(By.xpath("//input"));
+		int count = list.size();
+		System.out.println(count);
+		textBox.sendKeys("Automation Step by Step");
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
